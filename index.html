@@ -17,7 +17,7 @@
             align-items: center;
             flex-direction: column; /* 垂直排列内容 */
             background: linear-gradient(to bottom, #003366, #00b7d0); /* 初始背景渐变色（深蓝到浅青色） */
-            animation: backgroundFade 5s ease-in-out forwards; /* 背景渐变动画，时间延长至5秒，使用 ease-in-out 使动画更平滑 */
+            animation: backgroundFade 5s ease-in-out forwards; /* 背景渐变动画 */
         }
 
         h1 {
@@ -29,7 +29,8 @@
         p {
             font-size: 1.5rem;
             opacity: 0; /* 初始不可见 */
-            animation: fadeIn 2s forwards 2s; /* 延迟2秒后淡入 */
+            transform: translateX(-100%); /* 初始位置：从左侧外部 */
+            animation: textSlideIn 2s ease-out 2s forwards; /* 从两侧向中间滑入 */
             text-shadow: 0 0 10px rgba(0, 0, 0, 0.5); /* 添加文字阴影 */
         }
 
@@ -57,6 +58,18 @@
             }
             100% {
                 opacity: 1; /* 结束时完全可见 */
+            }
+        }
+
+        @keyframes textSlideIn {
+            0% {
+                transform: translateX(-100%); /* 从左侧滑入 */
+            }
+            50% {
+                transform: translateX(0); /* 中间位置 */
+            }
+            100% {
+                transform: translateX(0); /* 最终位置 */
             }
         }
 
