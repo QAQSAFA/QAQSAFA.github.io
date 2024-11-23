@@ -24,7 +24,7 @@
             background: linear-gradient(to bottom, #ffffff, #00b7d0);
             -webkit-background-clip: text;
             color: transparent;
-            animation: moveUp 2s forwards, scaleText 2s forwards, fadeIn 2s forwards;
+            animation: fadeIn 2s forwards, scaleText 2s forwards;
             text-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
             transition: transform 1s ease-in-out;
         }
@@ -72,15 +72,6 @@
 
         .separator:nth-of-type(2) {
             animation-delay: 1.5s;
-        }
-
-        @keyframes moveUp {
-            0% {
-                transform: translateY(50%) scale(2);
-            }
-            100% {
-                transform: translateY(-50vh) scale(1);
-            }
         }
 
         @keyframes scaleText {
@@ -135,7 +126,11 @@
 
         /* 点击后的样式 */
         .shifted {
-            transform: translateY(-80%) scale(0.8);
+            transform: translateY(-10vh); /* 主标题向上移动至距离顶部 -10vh */
+        }
+
+        .shifted-subtitle {
+            transform: translateY(-20vh); /* 副标题紧随主标题，向上移动至距离顶部 -20vh */
         }
 
         .fade-out {
@@ -163,8 +158,9 @@
         sep2.style.display = "none";
 
         button.addEventListener("click", () => {
-            title.classList.add("shifted");
-            subtitle.classList.add("shifted");
+            // 给主标题和副标题分别添加动画
+            title.classList.add("shifted"); // 主标题向上移动
+            subtitle.classList.add("shifted-subtitle"); // 副标题紧随其后向上移动
 
             // 显示分隔符
             sep1.style.display = "block";
