@@ -17,7 +17,7 @@
             align-items: center;
             flex-direction: column; /* 垂直排列内容 */
             background: linear-gradient(to bottom, #003366, #00b7d0); /* 初始背景渐变色（深蓝到浅青色） */
-            animation: backgroundFade 8s ease-in-out infinite; /* 背景渐变动画，时间调整为8秒，缓慢渐变 */
+            animation: backgroundFade 12s ease-in-out forwards; /* 背景渐变动画，时间调整为12秒，缓慢渐变 */
         }
 
         h1 {
@@ -77,11 +77,17 @@
             0% {
                 background: linear-gradient(to bottom, #003366, #00b7d0); /* 初始深蓝到浅青色 */
             }
+            25% {
+                background: linear-gradient(to bottom, #003366, #66b3cc); /* 中间的渐变色 */
+            }
             50% {
-                background: linear-gradient(to bottom, #66b3cc, #99ccff); /* 中间的渐变色 */
+                background: linear-gradient(to bottom, #66b3cc, #99ccff); /* 更浅的蓝色 */
+            }
+            75% {
+                background: linear-gradient(to bottom, #99ccff, #ffffff); /* 过渡到接近白色 */
             }
             100% {
-                background: linear-gradient(to bottom, #ffffff, #ffffff); /* 渐变到白色 */
+                background: linear-gradient(to bottom, #ffffff, #ffffff); /* 最终变为白色 */
             }
         }
     </style>
