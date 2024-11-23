@@ -22,7 +22,7 @@
 
         h1 {
             font-size: 6rem; /* 初始字体大小 */
-            background: linear-gradient(to bottom, #ffffff, #00b7d0); /* 标题文字渐变色，反向的浅色到青色 */
+            background: linear-gradient(to bottom, #ffffff, #00b7d0); /* 标题文字渐变色 */
             -webkit-background-clip: text; /* 使背景只应用于文字 */
             color: transparent; /* 文字颜色透明，背景色用于填充 */
             animation: moveUp 2s forwards, scaleText 2s forwards, fadeIn 2s forwards;
@@ -33,8 +33,11 @@
             font-size: 1.5rem;
             opacity: 0; /* 初始不可见 */
             transform: translateX(-100%); /* 初始位置：从左侧外部 */
-            animation: textSlideIn 2s ease-out 2s forwards; /* 从两侧向中间滑入 */
+            background: linear-gradient(to bottom, #ffffff, #00b7d0); /* 与标题一致的渐变背景 */
+            -webkit-background-clip: text; /* 使背景只应用于文字 */
+            color: transparent; /* 文字颜色透明 */
             text-shadow: 0 0 10px rgba(0, 0, 0, 0.5); /* 添加文字阴影 */
+            animation: textSlideIn 1s ease-in-out 3s forwards; /* 延迟3秒，持续1秒，从两侧滑入 */
         }
 
         @keyframes moveUp {
@@ -66,13 +69,15 @@
 
         @keyframes textSlideIn {
             0% {
+                opacity: 0; /* 初始不可见 */
                 transform: translateX(-100%); /* 从左侧滑入 */
             }
             50% {
-                transform: translateX(0); /* 中间位置 */
+                opacity: 1; /* 中途完全可见 */
+                transform: translateX(0); /* 靠拢到中间 */
             }
             100% {
-                transform: translateX(0); /* 最终位置 */
+                transform: translateX(0); /* 靠拢到中间 */
             }
         }
 
