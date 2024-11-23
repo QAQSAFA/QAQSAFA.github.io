@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cloudier</title>
+    <style>
+        body {
+            font-family: 'Microsoft YaHei Light', 'Microsoft YaHei', sans-serif; /* 使用微软轻体 */
+            background-color: #003366; /* 深蓝色背景，凸显浅青色文字 */
+            color: #00b7d0; /* 浅青色文字 */
+            text-align: center;
+            margin: 0;
+            padding: 0;
+            height: 100vh; /* 设置视口高度为100% */
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column; /* 垂直排列内容 */
+        }
+
+        h1 {
+            font-size: 6rem; /* 初始字体大小 */
+            animation: moveUp 2s forwards, scaleText 2s forwards;
+        }
+
+        p {
+            font-size: 1.5rem;
+            animation: fadeIn 2s forwards;
+        }
+
+        @keyframes moveUp {
+            0% {
+                transform: translateY(50%) scale(2); /* 从屏幕中间开始，放大 */
+            }
+            100% {
+                transform: translateY(-50vh) scale(1); /* 向上移动并缩小 */
+            }
+        }
+
+        @keyframes scaleText {
+            0% {
+                transform: scale(2); /* 初始是放大的状态 */
+            }
+            100% {
+                transform: scale(1); /* 缩小到正常大小 */
+            }
+        }
+
+        @keyframes fadeIn {
+            0% {
+                opacity: 0;
+            }
+            100% {
+                opacity: 1;
+            }
+        }
+    </style>
+</head>
+<body>
+    <h1>Cloudier</h1>
+    <p>我的第一个个人网站</p>
+</body>
+</html>
