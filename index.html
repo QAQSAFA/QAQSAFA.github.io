@@ -6,90 +6,176 @@
     <title>Cloudier</title>
     <style>
         body {
-            font-family: 'Microsoft YaHei Light', 'Microsoft YaHei', sans-serif; /* 使用微软轻体 */
+            font-family: 'Microsoft YaHei Light', 'Microsoft YaHei', sans-serif;
             text-align: center;
             margin: 0;
             padding: 0;
-            height: 100vh; /* 设置视口高度为100% */
+            height: 100vh;
             display: flex;
             justify-content: center;
             align-items: center;
-            flex-direction: column; /* 垂直排列内容 */
-            background: #003366; /* 初始深蓝色背景 */
-            animation: backgroundFade 5s linear forwards; /* 背景渐变动画，时间为5秒 */
+            flex-direction: column;
+            background: #003366;
+            animation: backgroundFade 5s linear forwards;
         }
 
         h1 {
-            font-size: 6rem; /* 初始字体大小 */
-            background: linear-gradient(to bottom, #ffffff, #00b7d0); /* 标题文字渐变色 */
-            -webkit-background-clip: text; /* 使背景只应用于文字 */
-            color: transparent; /* 文字颜色透明，背景色用于填充 */
+            font-size: 6rem;
+            background: linear-gradient(to bottom, #ffffff, #00b7d0);
+            -webkit-background-clip: text;
+            color: transparent;
             animation: moveUp 2s forwards, scaleText 2s forwards, fadeIn 2s forwards;
-            text-shadow: 0 0 10px rgba(0, 0, 0, 0.5); /* 添加文字阴影 */
+            text-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+            transition: transform 1s ease-in-out;
         }
 
         p {
             font-size: 1.5rem;
-            opacity: 0; /* 初始不可见 */
-            position: relative; /* 相对定位以实现动画 */
-            display: inline-block; /* 保持文字内容的紧凑布局 */
-            background: linear-gradient(to bottom, #ffffff, #00b7d0); /* 与标题一致的渐变背景 */
-            -webkit-background-clip: text; /* 使背景只应用于文字 */
-            color: transparent; /* 文字颜色透明 */
-            text-shadow: 0 0 10px rgba(0, 0, 0, 0.5); /* 添加文字阴影 */
-            animation: textGather 1s ease-in-out 3s forwards; /* 延迟3秒，持续1秒，逐字向中间聚拢 */
+            opacity: 0;
+            position: relative;
+            display: inline-block;
+            background: linear-gradient(to bottom, #ffffff, #00b7d0);
+            -webkit-background-clip: text;
+            color: transparent;
+            text-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+            animation: textGather 1s ease-in-out 3s forwards;
+            transition: transform 1s ease-in-out;
+        }
+
+        #more-btn {
+            font-size: 1.5rem;
+            padding: 10px 20px;
+            margin-top: 20px;
+            opacity: 0;
+            background: linear-gradient(to right, #00b7d0, #00ff88);
+            color: #fff;
+            border: none;
+            border-radius: 25px;
+            cursor: pointer;
+            animation: fadeIn 2s ease-in-out 5s forwards, jellyBounce 1s infinite 6s;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+            transition: opacity 1s ease, transform 1s ease;
+        }
+
+        .separator {
+            width: 80%;
+            height: 2px;
+            background: linear-gradient(to right, #00b7d0, #00ff88);
+            opacity: 0;
+            margin: 20px auto;
+            animation: fadeIn 2s ease-in-out forwards;
+        }
+
+        .separator:nth-of-type(1) {
+            animation-delay: 1s;
+        }
+
+        .separator:nth-of-type(2) {
+            animation-delay: 1.5s;
         }
 
         @keyframes moveUp {
             0% {
-                transform: translateY(50%) scale(2); /* 从屏幕中间开始，放大 */
+                transform: translateY(50%) scale(2);
             }
             100% {
-                transform: translateY(-50vh) scale(1); /* 向上移动并缩小 */
+                transform: translateY(-50vh) scale(1);
             }
         }
 
         @keyframes scaleText {
             0% {
-                transform: scale(2); /* 初始是放大的状态 */
+                transform: scale(2);
             }
             100% {
-                transform: scale(1); /* 缩小到正常大小 */
+                transform: scale(1);
             }
         }
 
         @keyframes fadeIn {
             0% {
-                opacity: 0; /* 开始时不可见 */
+                opacity: 0;
             }
             100% {
-                opacity: 1; /* 结束时完全可见 */
+                opacity: 1;
             }
         }
 
         @keyframes textGather {
             0% {
-                opacity: 0; /* 初始不可见 */
-                letter-spacing: 20px; /* 字符之间间距很大，从两边开始 */
+                opacity: 0;
+                letter-spacing: 20px;
             }
             100% {
-                opacity: 1; /* 最终完全可见 */
-                letter-spacing: normal; /* 字符间距恢复正常 */
+                opacity: 1;
+                letter-spacing: normal;
             }
         }
 
         @keyframes backgroundFade {
             0% {
-                background: #003366; /* 初始深蓝色 */
+                background: #003366;
             }
             100% {
-                background: #ffffff; /* 结束时白色 */
+                background: #ffffff;
             }
+        }
+
+        @keyframes jellyBounce {
+            0%, 100% {
+                transform: scale(1);
+            }
+            25% {
+                transform: scale(1.1);
+            }
+            50% {
+                transform: scale(0.9);
+            }
+        }
+
+        /* 点击后的样式 */
+        .shifted {
+            transform: translateY(-80%) scale(0.8);
+        }
+
+        .fade-out {
+            opacity: 0;
+            transform: scale(0.5);
         }
     </style>
 </head>
 <body>
-    <h1>Cloudier</h1>
-    <p>这是一位清远初中生正在调试自己的个人博客</p>
+    <h1 id="title">Cloudier</h1>
+    <p id="subtitle">这是一位清远初中生正在调试自己的个人博客</p>
+    <button id="more-btn">了解更多</button>
+    <div class="separator" id="sep1"></div>
+    <div class="separator" id="sep2"></div>
+
+    <script>
+        const button = document.getElementById("more-btn");
+        const title = document.getElementById("title");
+        const subtitle = document.getElementById("subtitle");
+        const sep1 = document.getElementById("sep1");
+        const sep2 = document.getElementById("sep2");
+
+        // 隐藏分隔符，初始不显示
+        sep1.style.display = "none";
+        sep2.style.display = "none";
+
+        button.addEventListener("click", () => {
+            title.classList.add("shifted");
+            subtitle.classList.add("shifted");
+
+            // 显示分隔符
+            sep1.style.display = "block";
+            sep2.style.display = "block";
+
+            // 给按钮添加淡出效果并在动画结束后隐藏
+            button.classList.add("fade-out");
+            setTimeout(() => {
+                button.style.display = "none";
+            }, 1000); // 等待1秒以完成淡出动画
+        });
+    </script>
 </body>
 </html>
