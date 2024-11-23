@@ -7,7 +7,6 @@
     <style>
         body {
             font-family: 'Microsoft YaHei Light', 'Microsoft YaHei', sans-serif; /* 使用微软轻体 */
-            color: #00b7d0; /* 浅青色文字 */
             text-align: center;
             margin: 0;
             padding: 0;
@@ -32,12 +31,13 @@
         p {
             font-size: 1.5rem;
             opacity: 0; /* 初始不可见 */
-            transform: translateX(-100%); /* 初始位置：从左侧外部 */
+            position: relative; /* 相对定位以实现动画 */
+            display: inline-block; /* 保持文字内容的紧凑布局 */
             background: linear-gradient(to bottom, #ffffff, #00b7d0); /* 与标题一致的渐变背景 */
             -webkit-background-clip: text; /* 使背景只应用于文字 */
             color: transparent; /* 文字颜色透明 */
             text-shadow: 0 0 10px rgba(0, 0, 0, 0.5); /* 添加文字阴影 */
-            animation: textSlideIn 1s ease-in-out 3s forwards; /* 延迟3秒，持续1秒，从两侧滑入 */
+            animation: textGather 1s ease-in-out 3s forwards; /* 延迟3秒，持续1秒，逐字向中间聚拢 */
         }
 
         @keyframes moveUp {
@@ -67,17 +67,14 @@
             }
         }
 
-        @keyframes textSlideIn {
+        @keyframes textGather {
             0% {
                 opacity: 0; /* 初始不可见 */
-                transform: translateX(-100%); /* 从左侧滑入 */
-            }
-            50% {
-                opacity: 1; /* 中途完全可见 */
-                transform: translateX(0); /* 靠拢到中间 */
+                letter-spacing: 20px; /* 字符之间间距很大，从两边开始 */
             }
             100% {
-                transform: translateX(0); /* 靠拢到中间 */
+                opacity: 1; /* 最终完全可见 */
+                letter-spacing: normal; /* 字符间距恢复正常 */
             }
         }
 
