@@ -16,12 +16,15 @@
             justify-content: center;
             align-items: center;
             flex-direction: column; /* 垂直排列内容 */
-            background: linear-gradient(to bottom, #003366, #00b7d0); /* 初始背景渐变色（深蓝到浅青色） */
-            animation: backgroundFade 12s ease-in-out forwards; /* 背景渐变动画，时间调整为12秒，缓慢渐变 */
+            background: #003366; /* 初始深蓝色背景 */
+            animation: backgroundFade 5s linear forwards; /* 背景渐变动画，时间为5秒 */
         }
 
         h1 {
             font-size: 6rem; /* 初始字体大小 */
+            background: linear-gradient(to bottom, #ffffff, #00b7d0); /* 标题文字渐变色，反向的浅色到青色 */
+            -webkit-background-clip: text; /* 使背景只应用于文字 */
+            color: transparent; /* 文字颜色透明，背景色用于填充 */
             animation: moveUp 2s forwards, scaleText 2s forwards, fadeIn 2s forwards;
             text-shadow: 0 0 10px rgba(0, 0, 0, 0.5); /* 添加文字阴影 */
         }
@@ -75,19 +78,10 @@
 
         @keyframes backgroundFade {
             0% {
-                background: linear-gradient(to bottom, #003366, #00b7d0); /* 初始深蓝到浅青色 */
-            }
-            25% {
-                background: linear-gradient(to bottom, #003366, #66b3cc); /* 中间的渐变色 */
-            }
-            50% {
-                background: linear-gradient(to bottom, #66b3cc, #99ccff); /* 更浅的蓝色 */
-            }
-            75% {
-                background: linear-gradient(to bottom, #99ccff, #ffffff); /* 过渡到接近白色 */
+                background: #003366; /* 初始深蓝色 */
             }
             100% {
-                background: linear-gradient(to bottom, #ffffff, #ffffff); /* 最终变为白色 */
+                background: #ffffff; /* 结束时白色 */
             }
         }
     </style>
