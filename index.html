@@ -7,7 +7,6 @@
     <style>
         body {
             font-family: 'Microsoft YaHei Light', 'Microsoft YaHei', sans-serif; /* 使用微软轻体 */
-            background-color: #003366; /* 深蓝色背景，凸显浅青色文字 */
             color: #00b7d0; /* 浅青色文字 */
             text-align: center;
             margin: 0;
@@ -17,6 +16,8 @@
             justify-content: center;
             align-items: center;
             flex-direction: column; /* 垂直排列内容 */
+            animation: backgroundChange 5s infinite alternate; /* 背景颜色渐变动画 */
+            overflow: hidden; /* 防止滚动条 */
         }
 
         h1 {
@@ -26,7 +27,8 @@
 
         p {
             font-size: 1.5rem;
-            animation: fadeIn 2s forwards;
+            opacity: 0; /* 初始不可见 */
+            animation: fadeIn 2s forwards 2s; /* 延迟2秒后淡入 */
         }
 
         @keyframes moveUp {
@@ -49,16 +51,35 @@
 
         @keyframes fadeIn {
             0% {
-                opacity: 0;
+                opacity: 0; /* 开始时不可见 */
             }
             100% {
-                opacity: 1;
+                opacity: 1; /* 结束时完全可见 */
+            }
+        }
+
+        /* 背景色渐变动画 */
+        @keyframes backgroundChange {
+            0% {
+                background: #003366; /* 初始深蓝色 */
+            }
+            25% {
+                background: #00b7d0; /* 浅青色 */
+            }
+            50% {
+                background: #ff7f00; /* 橙色 */
+            }
+            75% {
+                background: #1e90ff; /* 深蓝色 */
+            }
+            100% {
+                background: #8a2be2; /* 紫色 */
             }
         }
     </style>
 </head>
 <body>
     <h1>Cloudier</h1>
-    <p>我的第一个个人网站</p>
+    <p>这是一位清远初中生正在调试自己的个人博客</p>
 </body>
 </html>
