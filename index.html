@@ -16,18 +16,21 @@
             justify-content: center;
             align-items: center;
             flex-direction: column; /* 垂直排列内容 */
-            background: #003366; /* 设置静态背景色 */
+            background: linear-gradient(to bottom, #003366, #00b7d0); /* 初始背景渐变色（深蓝到浅青色） */
+            animation: backgroundFade 2.5s ease-out forwards; /* 背景渐变动画 */
         }
 
         h1 {
             font-size: 6rem; /* 初始字体大小 */
-            animation: moveUp 2s forwards, scaleText 2s forwards;
+            animation: moveUp 2s forwards, scaleText 2s forwards, fadeIn 2s forwards;
+            text-shadow: 0 0 10px rgba(0, 0, 0, 0.5); /* 添加文字阴影 */
         }
 
         p {
             font-size: 1.5rem;
             opacity: 0; /* 初始不可见 */
             animation: fadeIn 2s forwards 2s; /* 延迟2秒后淡入 */
+            text-shadow: 0 0 10px rgba(0, 0, 0, 0.5); /* 添加文字阴影 */
         }
 
         @keyframes moveUp {
@@ -54,6 +57,15 @@
             }
             100% {
                 opacity: 1; /* 结束时完全可见 */
+            }
+        }
+
+        @keyframes backgroundFade {
+            0% {
+                background: linear-gradient(to bottom, #003366, #00b7d0); /* 初始深蓝到浅青色 */
+            }
+            100% {
+                background: linear-gradient(to bottom, #ffffff, #ffffff); /* 渐变到白色 */
             }
         }
     </style>
